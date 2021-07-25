@@ -1,0 +1,19 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/employee-details.css">
+</head>
+
+<body>
+<%- include('includes/navigation.ejs') %>
+
+    <main class="employee-details">
+        <div class="image-area">
+            <img src="<%= employee.imageUrl %>" alt="empimage/<%= employee.name %>">
+        </div>
+        <div class="details">
+            <%- include('includes/employee-form.ejs') %>
+        </div>
+    </main>    
+
+
+<%- include('includes/end.ejs') %>

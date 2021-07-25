@@ -1,0 +1,28 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/employee-details.css">
+</head>
+
+<body>
+<%- include('includes/navigation.ejs') %>
+
+    <main class="employee-details">
+        <div class="image-area">
+            <img src="<%= employee.imageUrl %>" alt="empimage/<%= employee.name %>">
+        </div>
+        <div class="details">
+            
+            <form action="/edit-employee" method="post">
+                <%- include('includes/employee-form.ejs') %>
+
+                <input type="hidden" name="employeeId" value="<%= employee.id %>">
+
+            <button class="btn" type="submit">Update</button>
+            </form>
+
+        
+        </div>
+    </main>    
+
+
+<%- include('includes/end.ejs') %>

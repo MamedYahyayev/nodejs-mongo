@@ -1,0 +1,43 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/employees.css">
+  </head>
+  <body>
+<%- include('includes/navigation.ejs') %>
+
+<% if(employees.length > 0) { %>
+    <main class="employee-list">
+      <% for (let employee of employees) { %>
+        <div class="employee-card">
+          <div class="card-header">
+            <h1><%= employee.name%> <%= employee.surname%></h1>
+          </div>
+          <div class="card-content">
+              <div class="card-image">
+                  <img
+                    src="<%= employee.imageUrl %>"
+                    alt="employee-img/<%= employee.name %>"
+                  />
+                  <!-- print employee name in the alt  employee.name  -->
+                </div>
+          </div>
+          
+          <div class="card-footer">
+            <p><%= employee.description %></p>
+            <p>$<%= employee.salary %></p>
+            <a class="card-btn" href="/employee-details/<%= employee.id %>">Details</a>
+            <!-- if employee is working in the company then show end contract button otherwise show hire me button -->
+            <a class="card-btn" href="/edit-employee/<%= employee.id %>">Edit</a>
+            <form action="/delete-employee" method="post" id="delete-employee-form">
+              <button class="card-btn">Delete</button>
+              <input type="hidden" name="employeeId" value="<%= employee.id %>">
+            </form>
+          </div>
+        </div>   
+      <% } } else { %>
+        <h1>No Employee</h1>
+      <% } %>
+
+      </div>
+    </main>
+
+<%- include('includes/end.ejs') %>
